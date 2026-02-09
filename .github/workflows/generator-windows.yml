@@ -1,11 +1,12 @@
-name: Generator Windows
-
 on:
-  repository_dispatch:
-    types: [build_windows]
-
-jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      - run: echo "Тест: Workflow запущен из Django!"
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform (windows, macos, etc.)'
+        required: false
+      version:
+        description: 'RustDesk version'
+        required: false
+      app_name:
+        description: 'App name'
+        required: false
