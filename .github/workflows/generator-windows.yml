@@ -1,12 +1,53 @@
+name: Generator Windows
+
 on:
   workflow_dispatch:
     inputs:
       platform:
-        description: 'Platform (windows, macos, etc.)'
+        description: 'Platform'
         required: false
+        default: 'windows'
       version:
         description: 'RustDesk version'
         required: false
-      app_name:
-        description: 'App name'
+      appname:
+        description: 'App Name'
         required: false
+      server:
+        description: 'Server address'
+        required: false
+      key:
+        description: 'Public Key'
+        required: false
+      apiServer:
+        description: 'API Server'
+        required: false
+      custom:
+        description: 'Custom options'
+        required: false
+      uuid:
+        description: 'UUID'
+        required: false
+      iconlink:
+        description: 'Icon Link'
+        required: false
+      logolink:
+        description: 'Logo Link'
+        required: false
+      extras:
+        description: 'Extras'
+        required: false
+      filename:
+        description: 'Filename'
+        required: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: echo "Workflow запущен успешно!"
+      - run: echo "Platform: ${{ inputs.platform }}"
+      - run: echo "Version: ${{ inputs.version }}"
+      - run: echo "App Name: ${{ inputs.appname }}"
+      - run: echo "Server: ${{ inputs.server }}"
+      - run: echo "Key: ${{ inputs.key }}
