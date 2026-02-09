@@ -44,10 +44,35 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: Checkout RustDesk source (форкни rustdesk/rustdesk заранее!)
+        uses: actions/checkout@v4
+        with:
+          repository: rustdesk/rustdesk
+          path: rustdesk-source
+
+      - name: Build RustDesk
+        working-directory: rustdesk-source
+        run: |
+          cargo build --release --features use_samplerate,use_rubato
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rustdesk-custom-windows
+          path: rustdesk-source/target/release/frpsol.exe
+
+      - name: Debug
+        run: echo "Сборка завершена! Artifact: rustdesk-custom-windows"
       - name: Debug inputs
         run: |
           echo "Platform: ${{ inputs.platform }}"
