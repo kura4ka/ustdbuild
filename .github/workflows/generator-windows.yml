@@ -1,7 +1,11 @@
-name: Generator Windows Test
-on: [repository_dispatch]
+name: Generator Windows
+
+on:
+  repository_dispatch:
+    types: [build_windows]
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: echo "Workfl"
+      - run: echo "Тест: Workflow запущен из Django!"
