@@ -1,0 +1,7 @@
+name: Generator Windows Test
+on: [repository_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: echo "Workfl"
