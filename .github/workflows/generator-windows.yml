@@ -45,9 +45,14 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: echo "Workflow запущен успешно!"
-      - run: echo "Platform: ${{ inputs.platform }}"
-      - run: echo "Version: ${{ inputs.version }}"
-      - run: echo "App Name: ${{ inputs.appname }}"
-      - run: echo "Server: ${{ inputs.server }}"
-      - run: echo "Key: ${{ inputs.key }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Debug inputs
+        run: |
+          echo "Platform: ${{ inputs.platform }}"
+          echo "Version: ${{ inputs.version }}"
+          echo "App Name: ${{ inputs.appname }}"
+          echo "Server: ${{ inputs.server }}"
+          echo "Key: ${{ inputs.key }}"
+          echo "Workflow запущен успешно!"
